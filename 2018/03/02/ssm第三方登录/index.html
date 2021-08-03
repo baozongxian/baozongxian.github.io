@@ -5,28 +5,28 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://chenxingxing6.github.io">
-  <title>SSM对第三方登陆 | 陈星星的博客</title>
+  <link rel="dns-prefetch" href="https://baozongxian.github.io">
+  <title>SSM对第三方登陆 | 鲍潇贤的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="SSM对第三方登陆(QQ/微信/Github/微博/开源中国/人人网/豆瓣/百度)进行整合  QQ : QQ开发者平台  微信： 微信开发者平台   豆瓣：豆瓣开发平台  Github：Github开发平台教程 人人网：人人网开发平台  新浪: 新浪开放平台  开源中国：开源中国开发平台  oauth.properties中含有我的网站的appkey可用来测试1234567891011121314">
 <meta name="keywords" content="学习日志">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSM对第三方登陆">
-<meta property="og:url" content="https://chenxingxing6.github.io/2018/03/02/ssm第三方登录/index.html">
-<meta property="og:site_name" content="陈星星的博客">
+<meta property="og:url" content="https://baozongxian.github.io/2018/03/02/ssm第三方登录/index.html">
+<meta property="og:site_name" content="鲍潇贤的博客">
 <meta property="og:description" content="SSM对第三方登陆(QQ/微信/Github/微博/开源中国/人人网/豆瓣/百度)进行整合  QQ : QQ开发者平台  微信： 微信开发者平台   豆瓣：豆瓣开发平台  Github：Github开发平台教程 人人网：人人网开发平台  新浪: 新浪开放平台  开源中国：开源中国开发平台  oauth.properties中含有我的网站的appkey可用来测试1234567891011121314">
 <meta property="og:image" content="http://img.blog.csdn.net/20180301215424950">
 <meta property="og:image" content="http://img.blog.csdn.net/20180301215544658">
 <meta property="og:image" content="http://img.blog.csdn.net/20180301215833294">
 <meta property="og:image" content="http://img.blog.csdn.net/20180301220627681">
 <meta property="og:image" content="http://img.blog.csdn.net/20180301220737805">
-<meta property="og:updated_time" content="2018-03-02T06:01:52.017Z">
+<meta property="og:updated_time" content="2021-08-03T15:13:31.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSM对第三方登陆">
 <meta name="twitter:description" content="SSM对第三方登陆(QQ/微信/Github/微博/开源中国/人人网/豆瓣/百度)进行整合  QQ : QQ开发者平台  微信： 微信开发者平台   豆瓣：豆瓣开发平台  Github：Github开发平台教程 人人网：人人网开发平台  新浪: 新浪开放平台  开源中国：开源中国开发平台  oauth.properties中含有我的网站的appkey可用来测试1234567891011121314">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20180301215424950">
   
-    <link rel="alternative" href="/atom.xml" title="陈星星的博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="鲍潇贤的博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -56,7 +56,7 @@
 			<img src="https://chenxingxing6.github.io/img/header.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="">蓝星花</a></h1>
+		  <h1 class="header-author"><a href="">鲍潇贤</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">相信就能看见,有梦想就有蓝天</p>
@@ -118,7 +118,7 @@
 				<img src="https://chenxingxing6.github.io/img/header.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">蓝星花</h1>
+			  <h1 class="header-author js-header-author">鲍潇贤</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>相信就能看见,有梦想就有蓝天<i class="icon icon-quo-right"></i></p>
@@ -211,7 +211,7 @@
 <p>回调api：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(&quot;/callback&quot;)</div><div class="line">@ResponseBody</div><div class="line">public String callback(HttpServletRequest request)&#123;</div><div class="line">    String code = request.getParameter(&quot;code&quot;);</div><div class="line">    String state = request.getParameter(&quot;state&quot;);</div><div class="line">    // 取消了授权</div><div class="line">    if (StringUtils.isBlank(state)||StringUtils.isBlank(code))&#123;</div><div class="line">        return &quot;取消了授权&quot;;</div><div class="line">    &#125;</div><div class="line">    //清除state以防下次登录授权失败</div><div class="line">    //session.removeAttribute(SESSION_STATE);</div><div class="line">    //获取用户信息</div><div class="line">    try&#123;</div><div class="line">        JSONObject userInfo = OauthQQ.me().getUserInfoByCode(code);</div><div class="line">        log.error(userInfo.toString());</div><div class="line">        String type = &quot;qq&quot;;</div><div class="line">        String openid = userInfo.getString(&quot;openid&quot;);</div><div class="line">        String nickname = userInfo.getString(&quot;nickname&quot;);</div><div class="line">        String photoUrl = userInfo.getString(&quot;figureurl_2&quot;);</div><div class="line">        // 将相关信息存储数据库...</div><div class="line">        return userInfo.toString();</div><div class="line">    &#125;catch(Exception e)&#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125;</div><div class="line">    //这里你们可以自己修改，授权成功后，调到首页</div><div class="line">    return &quot;error&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><strong>我这里演示一下QQ第三方登录：</strong><br><img src="http://img.blog.csdn.net/20180301215544658" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20180301215833294" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20180301220627681" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20180301220737805" alt="这里写图片描述"></p>
 <hr>
-<p><strong>遇到问题可以Q我：1527072012</strong><br><strong>博客教程</strong>：<a href="http://blog.csdn.net/m0_37499059/article/details/79417395" target="_blank" rel="external">点击</a></p>
+<p><strong>遇到问题可以Q我：2014071314</strong><br><strong>博客教程</strong>：<a href="http://blog.csdn.net/m0_37499059/article/details/79417395" target="_blank" rel="external">点击</a></p>
 
       
 
@@ -312,7 +312,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://chenxingxing6.github.io/2018/03/02/ssm第三方登录/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://baozongxian.github.io/2018/03/02/ssm第三方登录/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -368,7 +368,7 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "https://chenxingxing6.github.io/2018/03/02/ssm第三方登录/", 
+    url: "https://baozongxian.github.io/2018/03/02/ssm第三方登录/", 
     sourceId: "ssm第三方登录",
     productKey: "true",
     target: "cloud-tie-wrapper"
@@ -391,7 +391,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 蓝星花
+    		&copy; 2021 鲍潇贤
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -530,7 +530,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://blog.csdn.net/m0_37499059/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>csdn博客</a>
+              <a href="https://blog.csdn.net/baozongxian" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>csdn博客</a>
             </li>
           
             <li class="search-li">
